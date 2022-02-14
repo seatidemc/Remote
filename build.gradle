@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+}
+
+group = 'top.seatide'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { name 'JitPack'; url 'https://jitpack.io' }
+    maven { name 'Spigot'; url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { name 'Sonatype'; url 'https://oss.sonatype.org/content/groups/public' }
+}
+
+dependencies {
+    implementation 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    implementation 'com.sparkjava:spark-core:2.9.3'
+    implementation 'com.alibaba:fastjson:1.2.76'
+    implementation group: 'com.github.oshi', name: 'oshi-core', version: '6.1.0'
+}
+
+def targetJavaVersion = 11
+
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = 11
+    targetCompatibility = 11
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}

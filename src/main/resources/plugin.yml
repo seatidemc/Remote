@@ -1,0 +1,6 @@
+name: Remote
+version: '${version}'
+main: top.seatide.remote.Main
+api-version: 1.16
+authors: [ Subilan ]
+website: https://github.com/seatidemc/remote
