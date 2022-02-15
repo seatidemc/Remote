@@ -1,1 +1,4 @@
 port: 25575
+password: ~
+token-check-host: ~
+index-page: index.html

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.loli.net" />
+    <link href="https://fonts.loli.net/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+    <title>Remote - Main Page</title>
+</head>
+<style>
+		body {
+			margin: 0;
+			background: #212121;
+			color: white;
+			font-family: 'Source Sans Pro', '微软雅黑', 'Microsoft YaHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		.container {
+			margin: 32px auto;
+			max-width: 1200px;
+            font-size: 20px;
+		}
+
+		.heading h1 {
+            margin: 0;
+            margin-bottom: 8px;
+            font-size: 48px;
+            font-weight: 600;
+        }
+
+        .heading span {
+            font-size: 14px;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        h2 {
+            font-size: 32px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid rgba(255, 255, 255, .21);
+        }
+
+        h3 {
+            font-size: 28px;
+            margin: 16px 0;
+        }
+
+        h3 em {
+            font-weight: normal;
+            padding: 0 16px;
+            line-height: 1.8;
+            border-radius: 5px;
+            margin-right: 8px;
+        }
+
+        ul {
+            padding-left: 16px;
+            line-height: 1.8;
+        }
+
+        em.get {
+            background: #2196f3;
+        }
+
+        em.post {
+            background: #d81b60;
+        }
+
+        em.ws {
+            background: #009688;
+        }
+
+        code {
+            background: rgba(255, 255, 255, .21);
+            padding: 2px 4px;
+            margin: 0 4px;
+            border-radius: 5px;
+            font-family: Consolas, 'Courier New', Courier, monospace;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, .21);
+            transition: all .2s ease;
+        }
+
+        a:hover {
+            border-bottom-color: white;
+        }
+
+	</style>
+<body>
+<div class="container">
+    <div class="heading">
+        <h1>Remote</h1>
+        <span><em>Remote</em> 是一个可用于从 Web 与 Minecraft 服务器交互的 Bukkit 插件。这里是它的<abbr title="此页面为默认页面，你可以通过修改插件配置目录下的 index.html 更改其内容，或者删除它。">默认页面</abbr>。</span>
+    </div>
+    <h2>Implemented API</h2>
+    <h3><em class="get">get</em> /device/constant/:type</h3>
+    <h3><em class="get">get</em> /device/dynamic/:type</h3>
+    <h3><em class="get">get</em> /all-info</h3>
+    <h3><em class="post">post</em> /server/exec</h3>
+    <h3><em class="ws">ws</em> /server/console</h3>
+    <p>Complete information on how to call them is shown in <a target="_blank" href="https://w.seatide.top/plugins/remote">Wiki</a> (Chinese).</p>
+    <h2>Relevant Links</h2>
+    <ul>
+        <li><a target="_blank" href="https://github.com/seatidemc/remote">GitHub Repository</a></li>
+        <li><a target="_blank" href="https://github.com/seatidemc/remote/issues">Issues</a></li>
+        <li><a target="_blank" href="mailto:christophersubilan@gmail.com">Mailto Author</a></li>
+    </ul>
+</div>
+</body>
+</html>
