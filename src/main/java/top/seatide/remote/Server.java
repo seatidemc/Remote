@@ -2,8 +2,6 @@ package top.seatide.remote;
 
 import com.google.common.base.Charsets;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import spark.Spark;
@@ -12,7 +10,6 @@ import top.seatide.remote.Utils.Files;
 import top.seatide.remote.Utils.LogUtil;
 
 import java.io.File;
-import java.util.stream.Collectors;
 
 import static spark.Spark.*;
 

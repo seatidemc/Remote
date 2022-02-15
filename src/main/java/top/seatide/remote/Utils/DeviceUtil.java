@@ -83,7 +83,7 @@ public class DeviceUtil {
                     cpuLoad = cpu.getSystemCpuLoadBetweenTicks(prevTicks) * 100;
                 }
             }
-        };;
+        };
         cpuLoadCalcThread = new Thread(calc);
         cpuLoadCalcThread.start();
     }
