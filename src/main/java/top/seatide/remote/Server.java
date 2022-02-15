@@ -130,7 +130,7 @@ public class Server {
                 }
             }
         });
-        get("/all-info", (req,res) -> {
+        get("/all-info", (req, res) -> {
             res.type("application/json");
             var result = new JSONObject();
             // device
