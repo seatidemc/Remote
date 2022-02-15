@@ -11,6 +11,6 @@ public class Test {
     public static void main(String[] args) {
         LogUtil.init();
         DeviceUtil.startCpuLoadCalc();
-        Server.startServer(2077);
+        Server.startServer(2077, null);
     }
 }

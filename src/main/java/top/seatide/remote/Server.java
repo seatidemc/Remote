@@ -14,7 +14,9 @@ import java.io.File;
 import static spark.Spark.*;
 
 public class Server {
-    public static void startServer(int p) {
+    public static String indexPage;
+    public static void startServer(int p, String indexPage) {
+        Server.indexPage = indexPage;
         port(p);
         initExceptionHandler((e) -> LogUtil.error("初始化 HTTP 出现错误：" + e.getMessage()));
         webSocket("/server/console", Console.class);
@@ -63,7 +65,6 @@ public class Server {
     }
 
     private static void map() {
-        var indexPage = Files.cfg.getString("index-page");
         if (indexPage != null) {
             get("/", (req, res) -> {
                 res.type("text/html");

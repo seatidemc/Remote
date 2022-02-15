@@ -18,7 +18,7 @@ public final class Main extends JavaPlugin {
         DeviceUtil.startTpsCalc(this);
         var port = Files.cfg.getInt("port");
         Console.listen();
-        Server.startServer(port);
+        Server.startServer(port, Files.cfg.getString("index-page"));
         LogUtil.success("HTTP 服务现运行于 " + port + " 端口。");
     }
 
