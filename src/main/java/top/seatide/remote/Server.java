@@ -42,13 +42,6 @@ public class Server {
         return json.toString();
     }
 
-    private static String ok(JSONObject content) {
-        var json = new JSONObject();
-        json.put("status", "ok");
-        json.put("content", content);
-        return json.toString();
-    }
-
     private static void errors() {
         notFound((req, res) -> {
             res.type("application/json");

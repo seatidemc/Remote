@@ -73,13 +73,11 @@ public class DeviceUtil {
             public void run() {
                 while (doCalc) {
                     long[] prevTicks = cpu.getSystemCpuLoadTicks();
-                    long[][] prevProcTicks = cpu.getProcessorCpuLoadTicks();
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
-                    long[] ticks = cpu.getSystemCpuLoadTicks();
                     cpuLoad = cpu.getSystemCpuLoadBetweenTicks(prevTicks) * 100;
                 }
             }
