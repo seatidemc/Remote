@@ -72,12 +72,15 @@ public class Server {
             var type = req.params("type");
             switch (type) {
                 case "ramload": {
-                    var result = 100.0 - (100.0 * DeviceUtil.ramAvail() / DeviceUtil.ramMax());
-                    return ok(String.format("%.2f", result));
+                    return ok(String.format("%.2f", 100.0 - (100.0 * DeviceUtil.ramAvail() / DeviceUtil.ramMax())));
                 }
 
                 case "cpuload": {
                     return ok(String.format("%.2f", DeviceUtil.cpuLoad()));
+                }
+
+                case "tps": {
+                    return ok(String.format("%.2f", DeviceUtil.tps(100)));
                 }
 
                 default: {
