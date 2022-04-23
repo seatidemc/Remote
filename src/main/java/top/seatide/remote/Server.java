@@ -23,7 +23,6 @@ public class Server {
         port(p);
         after((Filter) (request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");
-            ;
             response.header("Access-Control-Allow-Methods", "GET");
         });
         initExceptionHandler((e) -> LogUtil.error("初始化 HTTP 出现错误：" + e.getMessage()));
