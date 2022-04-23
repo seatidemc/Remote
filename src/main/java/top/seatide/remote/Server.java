@@ -5,7 +5,6 @@ import org.bukkit.Bukkit;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import spark.Filter;
 import spark.Spark;
 import top.seatide.remote.Utils.DeviceUtil;
 import top.seatide.remote.Utils.Files;
@@ -21,10 +20,26 @@ public class Server {
     public static void startServer(int p, String indexPage) {
         Server.indexPage = indexPage;
         port(p);
-        after((Filter) (request, response) -> {
-            response.header("Access-Control-Allow-Origin", "*");
-            response.header("Access-Control-Allow-Methods", "GET");
-        });
+        options("/*",
+                (request, response) -> {
+
+                    String accessControlRequestHeaders = request
+                            .headers("Access-Control-Request-Headers");
+                    if (accessControlRequestHeaders != null) {
+                        response.header("Access-Control-Allow-Headers",
+                                accessControlRequestHeaders);
+                    }
+
+                    String accessControlRequestMethod = request
+                            .headers("Access-Control-Request-Method");
+                    if (accessControlRequestMethod != null) {
+                        response.header("Access-Control-Allow-Methods",
+                                accessControlRequestMethod);
+                    }
+
+                    return "ok";
+                });
+        before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
         initExceptionHandler((e) -> LogUtil.error("初始化 HTTP 出现错误：" + e.getMessage()));
         webSocket("/server/console", Console.class);
         errors();
