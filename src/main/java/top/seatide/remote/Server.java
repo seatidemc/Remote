@@ -4,6 +4,8 @@ import com.google.common.base.Charsets;
 import org.bukkit.Bukkit;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import spark.Filter;
 import spark.Spark;
 import top.seatide.remote.Utils.DeviceUtil;
 import top.seatide.remote.Utils.Files;
@@ -15,9 +17,15 @@ import static spark.Spark.*;
 
 public class Server {
     public static String indexPage;
+
     public static void startServer(int p, String indexPage) {
         Server.indexPage = indexPage;
         port(p);
+        after((Filter) (request, response) -> {
+            response.header("Access-Control-Allow-Origin", "*");
+            ;
+            response.header("Access-Control-Allow-Methods", "GET");
+        });
         initExceptionHandler((e) -> LogUtil.error("初始化 HTTP 出现错误：" + e.getMessage()));
         webSocket("/server/console", Console.class);
         errors();
@@ -61,8 +69,9 @@ public class Server {
         if (indexPage != null) {
             get("/", (req, res) -> {
                 res.type("text/html");
-                //noinspection UnstableApiUsage
-                return com.google.common.io.Files.toString(Files.getFile(new File(Files.cwd), indexPage), Charsets.UTF_8);
+                // noinspection UnstableApiUsage
+                return com.google.common.io.Files.toString(Files.getFile(new File(Files.cwd), indexPage),
+                        Charsets.UTF_8);
             });
         }
         get("/device/constant/:type", (req, res) -> {
